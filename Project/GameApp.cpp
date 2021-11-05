@@ -11,6 +11,27 @@
 #include	"GameApp.h"
 #include	"GameDefine.h"
 
+#include	<vector>
+#include	<list>
+#include	<string>
+
+#include	<map>
+#include	<unordered_map>
+#include	<utility>
+
+std::vector<std::pair<std::string, CTexture>>pairTexture{"aiueo",CTexture()};
+std::unordered_map<std::string, CTexture>textureMap;
+void Func() 
+{
+	textureMap["aiueo"].Release("");
+}
+
+using TexturePtr = std::shared_ptr<CTexture>;
+std::vector<TexturePtr> textureArray;
+std::vector<int> testArray;
+std::list<int> testList;
+std::string name = { "aiueo" };
+
 using namespace Game;
 
 /*************************************************************************//*!
@@ -23,6 +44,16 @@ using namespace Game;
 MofBool CGameApp::Initialize(void){
 	//シーンをタイトルで初期化
 	sceneManager.Initialize(SceneName_Title,60);
+
+	
+		MOF_PRINTLOG("%s \n",name.c_str());
+		MOF_PRINTLOG("%d \n", name.length());
+		MOF_PRINTLOG("%d \n", name.size());
+		name += "ka";
+		MOF_PRINTLOG("%d \n", name.c_str());
+		name.substr(1, 2);
+		MOF_PRINTLOG("%d \n", name.c_str());
+		
 	return TRUE;
 }
 /*************************************************************************//*!
